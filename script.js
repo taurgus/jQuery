@@ -11,9 +11,10 @@ $(document).ready(function() {
         units: 'metric', 
         lang: 'fi'
       },
+      //
       success: function(response) {
         var weatherIcon = response.weather[0].icon;
-        var weatherInfo = 'Sää paikassa: ' + city + '<br>';
+        var weatherInfo = '<div class="weather-info-item">Sää paikassa: ' + city + '<br>';
         weatherInfo += '<div class="weather-info-item">Maa: ' + response.sys.country + '<br>';
         weatherInfo += '<div class="weather-info-item">Lämpötila: ' + response.main.temp + '°C<br>';
         weatherInfo += '<div class="weather-info-item">Ilmankosteus: ' + response.main.humidity + '%<br>';
@@ -25,6 +26,8 @@ $(document).ready(function() {
         
         
         $('#weather-info').html(weatherInfo);
+                $('#weather-info').hide().slideDown(500);
+
         $('.weather-info-item').hide().fadeIn(800, 'swing');
       },
       //Error functiolla ilmoitus, jos kaupunkia ei löydy tms.
