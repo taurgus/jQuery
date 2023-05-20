@@ -77,3 +77,21 @@ h1{
   #saanappi:hover {
     background-color: #014d9e;
   }
+
+  .weather-info-item {
+    opacity: 0; 
+    animation-name: fade-in;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      transform: translateY(20px); 
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0); 
+    }
+  }
