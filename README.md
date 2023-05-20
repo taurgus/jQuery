@@ -13,6 +13,8 @@ W3School
 
 https://www.w3schools.com/jquery/jquery_ajax_intro.asp
 
+https://www.w3schools.com/jquery/ajax_ajax.asp
+
 https://www.w3schools.com/jquery/jquery_ajax_get_post.asp
 
 https://www.w3schools.com/jquery/jquery_animate.asp
