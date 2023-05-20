@@ -9,10 +9,12 @@ $(document).ready(function() {
         q: city,
         appid: '5c69cea1adcc7b793afeaf500214c0c5', 
         units: 'metric' 
+        //lang: 'fi //EI TOIMI jQUERYLLÄ
       },
       success: function(response) {
         var weatherIcon = response.weather[0].icon;
-        var weatherInfo = 'Maa: ' + response.sys.country + '<br>';
+        var weatherInfo = 'Sää paikassa: ' + city + '<br>';
+        weatherInfo += 'Maa: ' + response.sys.country + '<br>';
         weatherInfo += 'Lämpötila: ' + response.main.temp + '°C<br>';
         weatherInfo += 'Ilmankosteus: ' + response.main.humidity + '%<br>';
         weatherInfo += 'Tuulennopeus: ' + response.wind.speed + ' m/s<br>';
@@ -24,6 +26,7 @@ $(document).ready(function() {
         
         $('#weather-info').html(weatherInfo);
       },
+      //Error functiolla ilmoitus, jos kaupunkia ei löydy tms.
       error: function() {
         $('#weather-info').html('Virhe haettaessa säädataa.');
       }
