@@ -67,6 +67,7 @@ h1{
     border-radius: 0.25rem;
     cursor: pointer;
     font-weight: 500;
+    margin-bottom: 10px
   }
 
   #saanappi:hover {
