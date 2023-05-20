@@ -1,68 +1,32 @@
 $(document).ready(function() {
-    // Ladataan tiedot localstoragesta
-    var tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-  
-    // Tuodaan tiedot esille
-    renderTasks();
-  
-    // Lisätään taski ja tarkistetaan, onko se kelvollinen
-    $('#addButton').click(function() {
-      var taskInput = $('#taskInput');
-      var taskText = taskInput.val().trim();
-    //Jos input on tyhjä
-      if (taskText.length === 0) {
-        alert('Ole hyvä ja anna tehtävä!');
+  $('#saanappi').click(function() {
+    var city = $('#location').val();
+    
+    // API pyyntö openweatheriin
+    $.ajax({
+      url: 'https://api.openweathermap.org/data/2.5/weather',
+      data: {
+        q: city,
+        appid: '5c69cea1adcc7b793afeaf500214c0c5', 
+        units: 'metric' 
+      },
+      success: function(response) {
+        var weatherIcon = response.weather[0].icon;
+        var weatherInfo = 'Maa: ' + response.sys.country + '<br>';
+        weatherInfo += 'Lämpötila: ' + response.main.temp + '°C<br>';
+        weatherInfo += 'Ilmankosteus: ' + response.main.humidity + '%<br>';
+        weatherInfo += 'Tuulennopeus: ' + response.wind.speed + ' m/s<br>';
+        weatherInfo += 'Pilvisyys: ' + response.clouds.all + '%<br>';
+        weatherInfo += 'Taivas: ' + response.weather[0].description + '<br>';
+        weatherInfo += '<img src="http://openweathermap.org/img/w/' + weatherIcon + '.png">';
+
         
-        return;
+        
+        $('#weather-info').html(weatherInfo);
+      },
+      error: function() {
+        $('#weather-info').html('Virhe haettaessa säädataa.');
       }
-    //Jos on liian pitkä
-      if (taskText.length > 15) {
-        alert('Liian pitkä, riittääkö edes aika?');
-        return;
-      }
-    //Liian lyhyt
-      if (taskText.length <= 2) {
-        alert('Liian lyhyt');
-        return;
-      }
-    //Jos taski löytyy jo
-      if (tasks.includes(taskText)) {
-        alert('Löytyy jo');
-        return;
-      }
-  
-      tasks.push(taskText);
-      saveTasks();
-      renderTasks();
-      taskInput.val('');
     });
-  
-    // Poistetaan taski
-    $('#taskList').on('click', 'button.deleteButton', function() {
-      var index = $(this).data('index');
-      tasks.splice(index, 1);
-      saveTasks();
-      renderTasks();
-    });
-  
-    // Renderöidään taskit
-    function renderTasks() {
-      var taskList = $('#taskList');
-      taskList.empty();
-  
-      for (var i = 0; i < tasks.length; i++) {
-        var task = tasks[i];
-    //Luodaan uusi li, johon tulee task
-        var listItem = $('<li>').text(task);
-        var deleteButton = $('<button>').text('Delete').addClass('deleteButton').data('index', i);
-  
-        listItem.append(deleteButton);
-        taskList.append(listItem);
-      }
-    }
-  
-    // Tallennettaan taskit localstorageen
-    function saveTasks() {
-      localStorage.setItem('tasks', JSON.stringify(tasks));
-    }
   });
+});
