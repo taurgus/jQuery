@@ -8,8 +8,8 @@ $(document).ready(function() {
       data: {
         q: city,
         appid: '5c69cea1adcc7b793afeaf500214c0c5', 
-        units: 'metric' 
-        //lang: 'fi //EI TOIMI jQUERYLLÄ
+        units: 'metric', 
+        lang: 'fi'
       },
       success: function(response) {
         var weatherIcon = response.weather[0].icon;
@@ -25,7 +25,7 @@ $(document).ready(function() {
         
         
         $('#weather-info').html(weatherInfo);
-        $('.weather-info-item').addClass('animate-fade-in');
+        $('.weather-info-item').hide().fadeIn(800, 'swing');
       },
       //Error functiolla ilmoitus, jos kaupunkia ei löydy tms.
       error: function() {

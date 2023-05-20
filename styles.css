@@ -26,12 +26,14 @@ h1{
 }
 
 #weather-form input[type="text"] {
+  font-family: 'Alegreya Sans SC';
   padding: 0.5rem;
   border-radius: 0.25rem;
   border: 1px solid #ccc;
   margin-bottom: 1rem;
   width: 100%;
   font-weight: bold;
+  font-size: 24px
 }
 
 #location {
@@ -58,6 +60,10 @@ h1{
   border-color: #007bff;
   }
 
+  .weather-icon {
+    font-size: 40px;
+  }
+
   #weather-info:empty {
     border: none;
     background-color: transparent;
@@ -78,20 +84,3 @@ h1{
     background-color: #014d9e;
   }
 
-  .weather-info-item {
-    opacity: 0; 
-    animation-name: fade-in;
-    animation-duration: 1s;
-    animation-fill-mode: forwards;
-  }
-  
-  @keyframes fade-in {
-    0% {
-      opacity: 0;
-      transform: translateY(20px); 
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0); 
-    }
-  }
