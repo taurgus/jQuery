@@ -60,11 +60,13 @@ h1{
   border-color: #007bff;
   }
  
+  /* Piilotetaan ruma tyhjä div */
   #weather-info:empty {
     border: none;
     background-color: transparent;
   }
 
+/* Nappulan speksit*/
   #saanappi {
     background-color: #007bff;
     color: #fff;
@@ -76,7 +78,7 @@ h1{
     margin-bottom: 10px
 
   }
-
+/* Muutetaan lievästi väriä napin yläpuolella */
   #saanappi:hover {
     background-color: #014d9e;
   }
