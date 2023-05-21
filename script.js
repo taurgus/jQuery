@@ -24,9 +24,10 @@ $(document).ready(function() { //Dokumenttia ei voi manipuloida, jos se ei ole r
         weatherInfo += '<div class="weather-info-item">Taivas: ' + response.weather[0].description + '<br>';
         weatherInfo += '<img src="http://openweathermap.org/img/w/' + weatherIcon + '.png">';
 
-        $('#weather-info').html(weatherInfo);    
+        //Parsitaan säätiedot esiin
+        $('#weather-info').html(weatherInfo);
+
         //Animaatiot diville ja tekstille
-            
         $('#weather-info').hide().slideDown(1000);
         $('.weather-info-item').hide().fadeIn(1000, 'swing');
       },
